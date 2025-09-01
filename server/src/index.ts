@@ -1,6 +1,8 @@
 import express, { Request, Response } from 'express';
 import { createServer } from 'http'
 import dotenv from 'dotenv';
+import { db } from 'db/db';
+import { todos } from 'db/schema';
 
 dotenv.config();
 
@@ -19,8 +21,14 @@ app.get("/health", (req: Request, res: Response) => {
   }
 });
 // Todos API
-app.get("/api/v1/todos", (req: Request, res: Response) => {
-  res.send("GET todos");
+app.get("/api/v1/todos", async (req: Request, res: Response) => {
+  try {
+    const result = await db.select().from(todos);
+    res.json(result);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
 });
 //Get todo by id
 app.get("/api/v1/todos/:id", (req: Request, res: Response) => {
