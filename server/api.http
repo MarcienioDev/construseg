@@ -1,0 +1,44 @@
+// Host
+@host = http://localhost:8080
+
+// Url
+@baseUrl = {{host}}/api/v1
+
+// Defines that the format of requests will be application/json
+@Content-Type = application/json
+
+### Makes a GET request
+GET {{host}}
+Content-Type: {{Content-Type}}
+
+
+### Endpoint to check if the API is running
+GET {{host}}/health
+Content-Type: {{Content-Type}}
+
+### POST to the /api/v1/todos endpoint, sending a JSON message with the task and description. This creates a new item in the system.
+POST {{baseUrl}}/todos
+Content-Type: {{Content-Type}}
+
+{
+    "task": "task to do",
+    "description": "Here's a description"
+}
+
+### Returns a list of all registered items.
+GET {{baseUrl}}/todos
+Content-Type: {{Content-Type}}
+
+
+### Search for item ID 123
+GET {{baseUrl}}/todos/123
+Content-Type: {{Content-Type}}
+
+
+### Updates some fields of the TODO with ID 123
+PATCH {{baseUrl}}/todos/123
+Content-Type: {{Content-Type}}
+
+### Deletes the TODO with ID 123
+DELETE {{baseUrl}}/todos/123
+Content-Type: {{Content-Type}}
