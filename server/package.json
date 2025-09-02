@@ -9,7 +9,8 @@
     "build": "rimraf dist && tsup src/index.ts --format cjs,esm --dts --minify",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "tsx src/db/migrate.ts",
-    "db:studio": "drizzle-kit studio"
+    "db:studio": "drizzle-kit studio",
+    "db:seed": "tsx src/db/seed.ts"
   },
   "keywords": [
     "express",

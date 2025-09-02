@@ -1,8 +1,7 @@
 import express, { Request, Response } from 'express';
 import { createServer } from 'http'
 import dotenv from 'dotenv';
-import { db } from 'db/db';
-import { todos } from 'db/schema';
+import { db, todos } from './db';
 
 dotenv.config();
 
